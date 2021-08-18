@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getBooks } from './actions/index'
 import Books from './components/books'
 import NavBar from './components/navBar'
+import Home from './components/home'
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
       
       <Router>
         <NavBar />
+        <Route path="/" component={ Home } />
         <Route path="/books" component={ Books } />
       </Router>
     )

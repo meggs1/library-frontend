@@ -1,12 +1,17 @@
 import './App.css'
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getBooks } from './actions/index'
+import Books from './components/books'
 
 class App extends Component {
 
-  state = {
-    books: {}
+  constructor(props) {
+    super(props)
+    this.state = { 
+      books: {}
+     }
   }
 
   componentDidMount(){
@@ -14,13 +19,15 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.props.books)
-    const books = this.props.books.map( book => <p>{book.title} - {book.author.name}</p>)
+    // console.log(this.props.books)
+    const books = this.props.books.map( book => <li id={book.id}>{book.title} - {book.author.name}</li>)
+    
     return (
-      <div className="App">
-        {books}
-      </div>
-    )
+      <Router>
+      <Route path="/" component={ Books } />
+      </Router>
+      )
+    
   }
 }
 

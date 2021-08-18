@@ -5,15 +5,20 @@ import { getBooks } from './actions/index'
 
 class App extends Component {
 
+  state = {
+    books: {}
+  }
+
   componentDidMount(){
     this.props.getBooks()
-    console.log(this.props.books)
   }
 
   render(){
+    console.log(this.props.books)
+    const books = this.props.books.map( book => <p>{book.title} - {book.author.name}</p>)
     return (
       <div className="App">
-  
+        {books}
       </div>
     )
   }

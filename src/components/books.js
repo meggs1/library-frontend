@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Book from './book'
 
 class Books extends Component {
     render() {
-        const books = this.props.books.map( (book) => <p> {book.title} - {book.author.name} </p>)
+        const books = this.props.books.map( book => 
+            <Book 
+                title={book.title}
+                year_published={book.year_published} 
+                author={book.author.name}
+                description={book.description}  
+            />
+        )
 
         return (
             <div>

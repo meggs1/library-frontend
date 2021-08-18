@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getBooks } from './actions/index'
 import Books from './components/books'
+import NavBar from './components/navBar'
 
 class App extends Component {
 
@@ -19,15 +20,13 @@ class App extends Component {
   }
 
   render(){
-    // console.log(this.props.books)
-    const books = this.props.books.map( book => <li id={book.id}>{book.title} - {book.author.name}</li>)
-    
     return (
+      
       <Router>
-      <Route path="/" component={ Books } />
+        <NavBar />
+        <Route path="/books" component={ Books } />
       </Router>
-      )
-    
+    )
   }
 }
 

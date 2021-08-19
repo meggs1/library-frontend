@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { addBook } from '../actions/index'
 
 class BookForm extends Component {
     state = {
@@ -16,12 +18,17 @@ class BookForm extends Component {
         })
     }
 
+    handleSubmit = e => {
+        e.preventDefault()
+        this.props.addBook(this.state)
+    }
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label>Title:</label>
+                        <label>Title: </label>
                         <input type="text" id="title" name="title" value={ this.state.title} onChange={ this.handleChange}/>  
                     </div>
                     <div>
@@ -43,4 +50,4 @@ class BookForm extends Component {
     }
 }
 
-export default BookForm
+export default connect(null, { addBook })(BookForm)

@@ -23,12 +23,11 @@ class App extends Component {
 
   render(){
     return (
-      
       <Router>
         <NavBar />
-        <Route path="/" component={ Home } />
-        <Route direct path="/books" component={ Books } />
-        <Route direct path="/books/new" component={ BookForm } />
+        <Route exact path="/" component={ Home } />
+        <Route exact path="/books" component={ Books } />
+        <Route exact path="/books/new" component={ BookForm } />
       </Router>
     )
   }

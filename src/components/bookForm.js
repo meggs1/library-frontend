@@ -1,8 +1,10 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBook } from '../actions/index'
 
 class BookForm extends Component {
+    photoFile = React.createRef()
+
     state = {
         title: '',
         author: '',
@@ -20,7 +22,9 @@ class BookForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.addBook(this.state)
+        const formData = new FormData(e.target)
+
+        this.props.addBook(formData)
     }
 
     render() {
@@ -33,7 +37,7 @@ class BookForm extends Component {
                     </div>
                     <div>
                         <label>Author: </label>
-                        <input type="text" id="author" name="author" value={ this.state.author} onChange={ this.handleChange}/>
+                        <input type="text" id="name" name="author" value={ this.state.author} onChange={ this.handleChange}/>
                     </div>
                     <div>
                         <label>Year Published: </label>
@@ -41,7 +45,11 @@ class BookForm extends Component {
                     </div>
                     <div>
                         <label>Description: </label>
-                        <input type="text" id="description" name="description" value={ this.state.description} onChange={ this.handleChange}/>
+                        <textarea type="text" id="description" name="description" value={ this.state.description} onChange={ this.handleChange}/>
+                    </div>
+                    <div>
+                        <label>Upload Image: </label>
+                        <input type="file" name="photo" ref={this.photoFile}/>
                     </div>
                     <input type="submit" value="Add Book"/>
                 </form>

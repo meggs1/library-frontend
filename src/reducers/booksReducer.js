@@ -7,6 +7,7 @@ export default function booksReducer(state = { books: [] }, action) {
         }
 
         case "ADD_BOOK":
+            debugger
             return {
                 ...state,
                 books: [...state.books, action.book]

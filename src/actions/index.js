@@ -9,12 +9,11 @@ export const getBooks = () => {
 export const addBook = (book) => {
     return dispatch => {
         fetch("http://localhost:3000/books", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({ book })
+            method: "POST",
+            headers: {
+                'Accept': 'application/json'
+            },
+            body: book
         })
         .then(resp => resp.json())
         .then(book => {
